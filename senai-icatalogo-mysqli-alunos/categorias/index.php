@@ -1,3 +1,17 @@
+<?php
+   
+    require('../database/conexao.php');
+
+    $sql = "SELECT * FROM tbl_categoria";
+
+    $resultado = mysqli_query($conexao, $sql);
+    
+    // echo'<pre>';
+    // var_dump($conexão);
+    //  echo'</pre>';
+    
+
+?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -32,6 +46,19 @@
                     <button>Salvar</button>
                 </form>
                 <h1>Lista de Categorias</h1>
+
+
+                    <?php
+
+                    while($categoria = mysqli_fetch_array($resultado)){
+
+                        echo $categoria["descricao"];
+
+                    }
+
+                    exit;
+
+                    ?>
 
                     <div class="card-categorias">
                         <img onclick="deletar()" src="https://icons.veryicon.com/png/o/construction-tools/coca-design/delete-189.png" />

@@ -13,11 +13,11 @@ const user = 'root';
 const password ='bcd127';
 const dataBase ='icatalogo';
 
-$conexão = mysqli_connect (host, user, password, dataBase);
-if($conexão === false){
+$conexao = mysqli_connect (host, user, password, dataBase);
+if($conexao === false){
     die(mysqli_connect_error());
 }
 
-echo'<pre>';
-var_dump($conexão);
-echo'</pre>';
+// echo'<pre>';
+// var_dump($conexão);
+// echo'</pre>';
