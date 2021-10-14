@@ -1,5 +1,17 @@
+<?php
 
+      require('../database/conexao.php');
 
+      $sql="SELECT p.*, c.descricao FROM tbl_produto p
+      INNER JOIN tbl_categoria c ON 
+      p.categoria_id = c.id;";
+
+    $resultado = mysqli_query($conexao, $sql);
+
+    //TESTE DE SELEÇÃO DE DADOS 
+
+    // var_dump($resultado);exit;
+?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -35,15 +47,35 @@
 
                 <!-- LISTAGEM DE PRODUTOS (INICIO) -->
 
+                <?php
+                
+                while ($produto = mysqli_fetch_array($resultado)) {
+
+
+                     $valor = $produto["valor"];
+                     $desconto = $produto["desconto"];
+
+                     if ($desconto > 0) {
+                         $valorDesvonto = ($desconto/100)* $valor;
+
+
+                     }
+
+                     $qtdParcelas =
+                     
+
+
+                ?>
+
                 <article class="card-produto">
 
-                       <div class="acoes-produtos">
+                    <div class="acoes-produtos">
                     <img onclick="javascript: window.location = './editar/?id=<?= $produto['id'] ?>'" src="../imgs/edit.svg" />
                     <img onclick="deletar(<?= $produto['id'] ?>)" src="../imgs/trash.svg" />
                     </div>
-    
+
                 <figure>
-                     <img src="" />
+                     <img src="fotos/<?php echo $produto["imagem"]?>" />
                 </figure>
 
                 <section>
@@ -67,7 +99,12 @@
 
                 </article>
 
+                <?php 
+                    }
+                ?>
+
                 </section>
+
 
                 <!-- LISTAGEM DE PRODUTOS (FIM) -->
 
