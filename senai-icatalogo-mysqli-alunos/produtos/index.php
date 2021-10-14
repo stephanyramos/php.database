@@ -56,14 +56,17 @@
                      $desconto = $produto["desconto"];
 
                      if ($desconto > 0) {
-                         $valorDesvonto = ($desconto/100)* $valor;
+                         $valorDesconto = ($desconto/100)* $valor;
 
 
                      }
 
-                     $qtdParcelas =
-                     
+                     $qtdParcelas = $valor > 1000 ? 12 : 6;
+                     $valorCoDesconto = $valor - $valorDesconto;
+                    //  $valor = $valor - $valorDesconto;
+                    //  $valor -= $valorDesconto
 
+                    $valorParcela = $valorCoDesconto / $qtdParcelas;
 
                 ?>
 
@@ -81,20 +84,21 @@
                 <section>
 
                     <span class="preco">
-                        R$ 
-                        <em>% off</em>
+                        R$ <?php echo number_format ($valorCoDesconto,2,',', '.') ?>
+                        <em><?php echo $desconto ;?>% off</em>
                     </span>
 
                     <span class="parcelamento">ou em
                         <em>
-                        x R$ sem juros
+                            <?php echo $qtdParcelas; ?>
+                        x R$ <?php echo number_format($valorParcela, 2 ,',','.git')?>sem juros
                         </em>
                     </span>
 
-                    <span class="descricao"></span>
+                    <span class="descricao"><?php echo $produto["descricao"]?></span>
 
                     <span class="categoria">
-                        <em></em>
+                        <em><?php echo $produto ["descricao"]?></em>
                      </span>
 
                 </article>
