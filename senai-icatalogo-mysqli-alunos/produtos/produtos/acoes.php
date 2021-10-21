@@ -187,6 +187,29 @@
             unlink("./fotos/" . $produto[0]);
 
             header("location: index.php");
+            break;
+            case"editar":
+                //atualizado imagem do produto
+
+                $produtoId = $_POST["produtoId"];
+                if ($_FILES["fotos"]["error"] != UPLOAD_ERR_NO_FILE) {
+                }
+
+
+
+                $descricao = $_POST["descricao"];
+                $valor = str_replace(".","",$_POST["valor"]);
+                $valor= str_replace(",",".",$valor);
+
+                $peso = str_replace(".","",$_POST["peso"]);
+                $peso = str_replace(",",".",$peso);
+
+                $quantidade = $_POST["quantidade"];
+                $cor = $_POST["descrição"];
+                $tamanho =$_POST["tamanho"];
+                $desconto = $_POST["desconto"];
+                $categoriaId = $_POST["cateoriaid"];
+                break;
         
         default:
             # code...
